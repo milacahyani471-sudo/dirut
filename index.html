@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Eksekutif - Direktur Utama</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0B132B',
+                            800: '#1C2541',
+                            700: '#2A365B',
+                        },
+                        gold: {
+                            400: '#F3C66B',
+                            500: '#D4AF37',
+                            600: '#AA8C2C',
+                        },
+                        slate: {
+                            850: '#151E2E',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Customizations & Animations */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #9A7B1C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+        }
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, #D4AF37, #4A5568) 1;
+        }
+        .glass-card {
+            background: rgba(28, 37, 65, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .glass-card-hover {
+            transition: all 0.3s ease;
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.15);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B132B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A365B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-navy-900 text-slate-200 font-sans antialiased selection:bg-gold-500 selection:text-navy-900 overflow-x-hidden">
+
+    <!-- NAVIGASI UTAMA -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5 bg-navy-900/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <!-- Brand Logo / Name -->
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full border border-gold-500/50 flex items-center justify-center bg-navy-800 text-gold-500 font-serif font-bold text-xl group-hover:border-gold-500 transition-colors">
+                    S
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-lg text-white tracking-wide group-hover:text-gold-400 transition-colors">Prof. Syahdan Affan Assegaf, S.T., S.H.</span>
+                    <span class="text-xs text-gold-500/80 uppercase tracking-widest font-medium">Direktur Utama</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-gold-400 transition-colors">Profil</a>
+                <a href="#achievements" class="text-slate-300 hover:text-gold-400 transition-colors">Pencapaian</a>
+                <a href="#experience" class="text-slate-300 hover:text-gold-400 transition-colors">Karir</a>
+                <a href="#governance" class="text-slate-300 hover:text-gold-400 transition-colors">Filosofi</a>
+                <a href="#media" class="text-slate-300 hover:text-gold-400 transition-colors">Media</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-full border border-gold-500/60 text-gold-400 hover:bg-gold-500 hover:text-navy-900 transition-all duration-300 shadow-lg shadow-gold-500/10">
+                    Inkuiri Eksekutif
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-gold-400 focus:outline-none p-2" aria-label="Toggle Navigation">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-800/95 border-b border-gold-500/20 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-slate-200 hover:text-gold-400 py-2 border-b border-white/5">Profil</a>
+            <a href="#achievements" class="block text-slate-200 hover:text-gold-400 py-2 border-b border-white/5">Pencapaian</a>
+            <a href="#experience" class="block text-slate-200 hover:text-gold-400 py-2 border-b border-white/5">Karir</a>
+            <a href="#governance" class="block text-slate-200 hover:text-gold-400 py-2 border-b border-white/5">Filosofi</a>
+            <a href="#media" class="block text-slate-200 hover:text-gold-400 py-2 border-b border-white/5">Media</a>
+            <a href="#contact" class="block text-center mt-4 w-full py-3 rounded-lg gold-gradient-bg text-navy-900 font-bold">Inkuiri Eksekutif</a>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden flex items-center min-h-screen">
+        <!-- Background Lighting FX -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-navy-700/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Text & Intro -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs tracking-widest uppercase font-semibold">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        <span>Kepemimpinan Strategis & Transformaif</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+                        Mengakselerasi Pertumbuhan Perusahaan Menuju <span class="gold-gradient-text">Skala Global</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+                        <strong>Prof. Syahdan Affan Assegaf, S.T., S.H.</strong> adalah Direktur Utama PT Nusantara Holdco Tbk. Lebih dari 20 tahun memimpin transformasi korporasi skala besar, mergers & acquisitions, kepatuhan hukum, serta ekspansi bisnis berkelanjutan di Asia Tenggara.
+                    </p>
+
+                    <!-- Quote Kepemimpinan -->
+                    <div class="p-4 sm:p-6 rounded-xl glass-card border-l-4 border-l-gold-500 my-6 text-left relative">
+                        <i data-lucide="quote" class="absolute right-4 top-4 w-8 h-8 text-gold-500/20"></i>
+                        <p class="font-serif italic text-slate-200 text-base sm:text-lg">
+                            "Kepemimpinan sejati bukan tentang mengendalikan arah angin, melainkan menyesuaikan layar untuk membawa seluruh organisasi melampaui badai menuju kejayaan."
+                        </p>
+                    </div>
+
+                    <!-- Call To Actions -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl gold-gradient-bg text-navy-900 font-bold hover:shadow-xl hover:shadow-gold-500/20 transition-all duration-300 flex items-center justify-center space-x-2">
+                            <span>Ajukan Diskusi Eksekutif</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#achievements" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-navy-800 text-white font-medium transition-all duration-300 flex items-center justify-center space-x-2 border border-white/10">
+                            <i data-lucide="award" class="w-5 h-5 text-gold-400"></i>
+                            <span>Lihat Ream Rekam</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Executive Portrait -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <div class="relative w-full max-w-md">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-1.5 rounded-2xl gold-gradient-bg opacity-40 blur-sm"></div>
+                        <div class="relative rounded-2xl overflow-hidden border border-gold-500/30 bg-navy-800 shadow-2xl">
+                            <!-- Image Fallback & Standard Photo -->
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Prof. Syahdan Affan Assegaf - Executive Portrait" 
+                                 class="w-full h-[480px] object-cover object-center filter grayscale contrast-105 hover:grayscale-0 transition-all duration-700"
+                                 onerror="this.src='https://placehold.co/600x800/1C2541/D4AF37?text=Prof.+Syahdan+Affan+Assegaf'">
+                            
+                            <!-- Floating Tag Badge -->
+                            <div class="absolute bottom-4 left-4 right-4 p-4 glass-card rounded-xl border border-white/10 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-gold-400 font-semibold uppercase tracking-wider">Jabatan Saat Ini</p>
+                                    <p class="text-sm font-bold text-white">Group CEO @ PT Nusantara Holdco</p>
+                                </div>
+                                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. KEY ACHIEVEMENTS & METRICS -->
+    <section id="achievements" class="py-20 bg-navy-800/50 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-gold-400 uppercase tracking-widest mb-2">Jejak Keberhasilan</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Ringkasan Eksekutif & Metrik Pertumbuhan</h3>
+                <div class="w-16 h-1 gold-gradient-bg mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Grid Metrik Statistik -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                
+                <div class="p-6 rounded-2xl glass-card glass-card-hover text-center relative overflow-hidden">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-4xl font-bold font-serif text-white mb-1 counter" data-target="4.2">Rp 4.2 T</div>
+                    <p class="text-xs uppercase tracking-wider text-gold-400 font-semibold mb-2">Total Aset Dikelola</p>
+                    <p class="text-xs text-slate-400">Peningkatan 140% dalam 5 tahun kepemimpinan terakhir.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl glass-card glass-card-hover text-center relative overflow-hidden">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400">
+                        <i data-lucide="globe-2" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-4xl font-bold font-serif text-white mb-1">12 Negara</div>
+                    <p class="text-xs uppercase tracking-wider text-gold-400 font-semibold mb-2">Jangkauan Pasar Global</p>
+                    <p class="text-xs text-slate-400">Memimpin ekspansi operasional di kawasan APAC & Middle East.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl glass-card glass-card-hover text-center relative overflow-hidden">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-4xl font-bold font-serif text-white mb-1">8,500+</div>
+                    <p class="text-xs uppercase tracking-wider text-gold-400 font-semibold mb-2">Tenaga Kerja</p>
+                    <p class="text-xs text-slate-400">Membangun budaya kerja inklusif & berkinerja tinggi.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl glass-card glass-card-hover text-center relative overflow-hidden">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-4xl font-bold font-serif text-white mb-1">25+</div>
+                    <p class="text-xs uppercase tracking-wider text-gold-400 font-semibold mb-2">Penghargaan Industri</p>
+                    <p class="text-xs text-slate-400">Termasuk CEO Terbaik versi Asia Business Forum 2024.</p>
+                </div>
+
+            </div>
+
+            <!-- Highlights / Key Accomplishments List -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="p-8 rounded-2xl glass-card border border-gold-500/20">
+                    <h4 class="font-serif text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="text-gold-400"></i>
+                        Pencapaian Strategis Utama
+                    </h4>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="chevron-right" class="w-5 h-5 text-gold-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Restrukturisasi Korporasi:</strong> Memimpin proses M&A senilai USD 250 Juta yang sukses meningkatkan efisiensi operasional hingga 35%.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="chevron-right" class="w-5 h-5 text-gold-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Transformasi Digital:</strong> Mengintegrasikan sistem AI & Automation di seluruh lini manufaktur, memangkas biaya produksi hingga 22%.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="chevron-right" class="w-5 h-5 text-gold-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Inisiatif ESG & Keberlanjutan:</strong> Mengantarkan perusahaan meraih akreditasi *Net Zero Pioneer* dengan pengurangan emisi karbon 40%.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="p-8 rounded-2xl glass-card border border-gold-500/20">
+                    <h4 class="font-serif text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i data-lucide="trophy" class="text-gold-400"></i>
+                        Penghargaan Eksekutif Terkini
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="border-b border-white/5 pb-3">
+                            <span class="text-xs text-gold-400 font-mono">2025</span>
+                            <h5 class="text-white font-semibold">Indonesia Best CEO Award - Financial Excellence</h5>
+                            <p class="text-xs text-slate-400">Diberikan oleh Majalah Bisnis Utama atas kepemimpinan resilient.</p>
+                        </div>
+                        <div class="border-b border-white/5 pb-3">
+                            <span class="text-xs text-gold-400 font-mono">2023</span>
+                            <h5 class="text-white font-semibold">Asia Transformational Leader of the Year</h5>
+                            <p class="text-xs text-slate-400">Singapore Leadership Summit atas keberhasilan merger regional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. CAREER HISTORY / LEADERSHIP TIMELINE -->
+    <section id="experience" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-gold-400 uppercase tracking-widest mb-2">Rekam Jejak Kepemimpinan</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Perjalanan Karir Eksekutif</h3>
+                <div class="w-16 h-1 gold-gradient-bg mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Timeline Structure -->
+            <div class="relative border-l-2 border-gold-500/30 ml-4 md:ml-32 space-y-12">
+                
+                <!-- Role 1 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <!-- Circle Marker -->
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gold-500 border-4 border-navy-900 group-hover:scale-125 transition-transform"></div>
+                    
+                    <!-- Year Badge (Desktop offset) -->
+                    <div class="md:absolute md:-left-36 md:top-1 text-sm font-bold text-gold-400 font-mono mb-2 md:mb-0">
+                        2020 - SEKARANG
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card glass-card-hover border border-white/10">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                            <div>
+                                <h4 class="text-xl font-serif font-bold text-white">Direktur Utama (Group CEO)</h4>
+                                <p class="text-gold-400 font-medium text-sm">PT Nusantara Holdco Tbk</p>
+                            </div>
+                            <span class="inline-block mt-2 sm:mt-0 px-3 py-1 rounded-full bg-gold-500/10 text-gold-400 text-xs font-semibold border border-gold-500/20">
+                                Konglomerat Holding
+                            </span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Bertanggung jawab penuh atas arah strategis, kinerja finansial, dan tata kelola grup bisnis dengan 8 anak perusahaan lintas sektor (Energi, Infrastruktur, Teknologi).
+                        </p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Mencapai pendapatan rekor tertinggi perusahaan sebesar Rp 12,8 Triliun pada 2024.</li>
+                            <li>Memimpin inisiasi IPO anak perusahaan manufaktur bernilai valuasi tinggi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-700 border-4 border-navy-900 group-hover:bg-gold-500 transition-colors"></div>
+                    
+                    <div class="md:absolute md:-left-36 md:top-1 text-sm font-bold text-gold-400 font-mono mb-2 md:mb-0">
+                        2015 - 2020
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card glass-card-hover border border-white/10">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                            <div>
+                                <h4 class="text-xl font-serif font-bold text-white">Managing Director & COO</h4>
+                                <p class="text-gold-400 font-medium text-sm">Asean Energy Global Corp</p>
+                            </div>
+                            <span class="inline-block mt-2 sm:mt-0 px-3 py-1 rounded-full bg-navy-700 text-slate-300 text-xs font-semibold">
+                                Sektor Energi
+                            </span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Mengawasi efisiensi operasional dan pengembangan proyek energi baru terbarukan di 4 negara Asia Tenggara.
+                        </p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Mengembangkan portofolio pembangkit listrik tenaga surya sebesar 450 MW.</li>
+                            <li>Mengurangi biaya operasional (OPEX) hingga 18% melalui otomatisasi digital.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-700 border-4 border-navy-900 group-hover:bg-gold-500 transition-colors"></div>
+                    
+                    <div class="md:absolute md:-left-36 md:top-1 text-sm font-bold text-gold-400 font-mono mb-2 md:mb-0">
+                        2010 - 2015
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card glass-card-hover border border-white/10">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                            <div>
+                                <h4 class="text-xl font-serif font-bold text-white">Vice President of Corporate Strategy</h4>
+                                <p class="text-gold-400 font-medium text-sm">Global Capital Partners</p>
+                            </div>
+                            <span class="inline-block mt-2 sm:mt-0 px-3 py-1 rounded-full bg-navy-700 text-slate-300 text-xs font-semibold">
+                                Private Equity
+                            </span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Mengelola portofolio investasi akuisisi perusahaan bernilai tinggi serta merancang strategi exit yang menguntungkan bagi investor institusional.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. BOARD & GOVERNANCE / CORE PHILOSOPHY -->
+    <section id="governance" class="py-24 bg-navy-800/40 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-gold-400 uppercase tracking-widest mb-2">Prinsip & Nilai Kepemimpinan</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Tata Kelola & Filosofi Bisnis</h3>
+                <div class="w-16 h-1 gold-gradient-bg mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Pillar 1 -->
+                <div class="p-8 rounded-2xl glass-card glass-card-hover border border-gold-500/20 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6">
+                        <i data-lucide="scale" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-serif text-xl font-bold text-white mb-3">Integritas & Tata Kelola (GCG)</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed font-light">
+                        Menerapkan standar tertinggi *Good Corporate Governance*, transparansi, serta akuntabilitas tanpa kompromi dalam setiap keputusan tingkat dewan.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="p-8 rounded-2xl glass-card glass-card-hover border border-gold-500/20 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6">
+                        <i data-lucide="compass" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-serif text-xl font-bold text-white mb-3">Visi Jangka Panjang</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed font-light">
+                        Membangun pertumbuhan organisasi yang berkelanjutan (*sustainable growth*) daripada sekadar mencari keuntungan jangka pendek yang berisiko tinggi.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="p-8 rounded-2xl glass-card glass-card-hover border border-gold-500/20 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6">
+                        <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-serif text-xl font-bold text-white mb-3">Empati & Pemberdayaan</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed font-light">
+                        Mendorong inovasi dari bawah ke atas dengan memberdayakan talenta terbaik dan menciptakan lingkungan kerja berdampak positif bagi masyarakat.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Board Memberships / Affiliations -->
+            <div class="mt-16 p-8 rounded-2xl glass-card border border-white/10">
+                <h4 class="font-serif text-lg font-bold text-white mb-6 text-center md:text-left">Keanggotaan Dewan & Afiliasi Organisasi</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center opacity-80">
+                    <div class="text-center font-serif text-slate-300 font-semibold text-sm border border-white/10 p-3 rounded-lg">
+                        Ketua Asosiasi Emiten Indonesia
+                    </div>
+                    <div class="text-center font-serif text-slate-300 font-semibold text-sm border border-white/10 p-3 rounded-lg">
+                        Dewan Pembina Chamber of Commerce
+                    </div>
+                    <div class="text-center font-serif text-slate-300 font-semibold text-sm border border-white/10 p-3 rounded-lg">
+                        Anggota World Economic Forum
+                    </div>
+                    <div class="text-center font-serif text-slate-300 font-semibold text-sm border border-white/10 p-3 rounded-lg">
+                        Ikatan Alumni MBA Harvard / INSEAD
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. MEDIA, PUBLICATIONS & KEYNOTE SPEAKING -->
+    <section id="media" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-gold-400 uppercase tracking-widest mb-2">Publikasi & Kehadiran Media</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">Liputan Berita & Keynote Speaker</h3>
+                <div class="w-16 h-1 gold-gradient-bg mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Media Card 1 -->
+                <div class="rounded-2xl glass-card glass-card-hover overflow-hidden border border-white/10 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80" alt="Keynote Speaking" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        onerror="this.src='https://placehold.co/600x400/1C2541/D4AF37?text=Keynote+Speaker'">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-navy-900/80 text-gold-400 text-xs font-semibold border border-gold-500/30">Keynote Event</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-400 mb-2">Singapore Energy Summit 2024</p>
+                            <h4 class="font-serif font-bold text-white text-lg mb-3">Masa Depan Transisi Energi Berkelanjutan di Asia Tenggara</h4>
+                            <p class="text-slate-300 text-xs leading-relaxed mb-4">Penyampaian pandangan eksekutif terkait pembiayaan hijau dan kolaborasi antar negara.</p>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-xs text-gold-400 font-semibold hover:text-gold-300">
+                            <span>Tonton Rekaman</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Media Card 2 -->
+                <div class="rounded-2xl glass-card glass-card-hover overflow-hidden border border-white/10 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Forbes Interview" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        onerror="this.src='https://placehold.co/600x400/1C2541/D4AF37?text=Wawancara+Eksklusif'">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-navy-900/80 text-gold-400 text-xs font-semibold border border-gold-500/30">Wawancara Eksklusif</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-400 mb-2">Forbes Business Review</p>
+                            <h4 class="font-serif font-bold text-white text-lg mb-3">Strategi Ketahanan Bisnis di Tengah Ketidakpastian Global</h4>
+                            <p class="text-slate-300 text-xs leading-relaxed mb-4">Wawancara mendalam mengenai manajemen risiko dan navigasi disrupsi rantai pasok.</p>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-xs text-gold-400 font-semibold hover:text-gold-300">
+                            <span>Baca Artikel Lengkap</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Media Card 3 -->
+                <div class="rounded-2xl glass-card glass-card-hover overflow-hidden border border-white/10 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80" alt="Leadership Article" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        onerror="this.src='https://placehold.co/600x400/1C2541/D4AF37?text=Jurnal+Kepemimpinan'">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-navy-900/80 text-gold-400 text-xs font-semibold border border-gold-500/30">Publikasi Opini</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-slate-400 mb-2">Harvard Business Review Asia</p>
+                            <h4 class="font-serif font-bold text-white text-lg mb-3">Mengintegrasikan Kecerdasan Buatan dalam Tata Kelola Direksi</h4>
+                            <p class="text-slate-300 text-xs leading-relaxed mb-4">Artikel tulisan Prof. Syahdan Affan Assegaf tentang peran kecerdasan buatan dalam akurasi keputusan strategis.</p>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-xs text-gold-400 font-semibold hover:text-gold-300">
+                            <span>Unduh Whitepaper</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. CONTACT & EXECUTIVE INQUIRY FORM -->
+    <section id="contact" class="py-24 bg-navy-800/60 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <h2 class="text-xs font-semibold text-gold-400 uppercase tracking-widest mb-2">Komunikasi Resmi</h2>
+                        <h3 class="font-serif text-3xl font-bold text-white">Hubungi Kantor Sekretariat Eksekutif</h3>
+                        <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                            Formulir ini ditujukan khusus untuk keperluan pembicara keynote, kemitraan strategis, konsultasi dewan, atau korespondensi resmi media.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="building-2" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold text-sm">Kantor Pusat Korporasi</h5>
+                                <p class="text-slate-400 text-xs">Nusantara Tower, Lantai 45, Kawasan HR Rasuna Said, Jakarta Selatan, Indonesia</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold text-sm">Sekretaris Eksekutif</h5>
+                                <p class="text-slate-400 text-xs">executive.office@nusantaraholdco.co.id</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold text-sm">Profil Profesional</h5>
+                                <a href="https://linkedin.com" target="_blank" class="text-gold-400 hover:underline text-xs">linkedin.com/in/syahdan-affan-assegaf</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form -->
+                <div class="lg:col-span-7">
+                    <div class="p-8 rounded-2xl glass-card border border-gold-500/30">
+                        <h4 class="font-serif text-xl font-bold text-white mb-6">Formulir Inkuiri Eksekutif</h4>
+                        
+                        <!-- Alert Box (Hidden by default) -->
+                        <div id="form-alert" class="hidden p-4 mb-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm">
+                            Pesan Anda telah berhasil dikirim ke Sekretariat Eksekutif. Tim kami akan merespons dalam 1-2 hari kerja.
+                        </div>
+
+                        <form id="inquiryForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1">Nama Lengkap *</label>
+                                    <input type="text" required placeholder="Dr. / Bpk. / Ibu" class="w-full px-4 py-3 rounded-xl bg-navy-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1">Perusahaan / Organisasi *</label>
+                                    <input type="text" required placeholder="Nama Perusahaan" class="w-full px-4 py-3 rounded-xl bg-navy-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1">Email Resmi *</label>
+                                    <input type="email" required placeholder="nama@perusahaan.com" class="w-full px-4 py-3 rounded-xl bg-navy-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1">Kategori Inkuiri *</label>
+                                    <select required class="w-full px-4 py-3 rounded-xl bg-navy-900/80 border border-white/10 text-slate-300 text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                                        <option value="">Pilih Kategori Perihal</option>
+                                        <option value="keynote">Undangan Keynote Speaker</option>
+                                        <option value="partnership">Kemitraan & Penanaman Modal</option>
+                                        <option value="governance">Konsultasi Tata Kelola / Board</option>
+                                        <option value="media">Wawancara & Liputan Media</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Ringkasan Pesan / Maksud *</label>
+                                <textarea rows="4" required placeholder="Tuliskan pesan atau agenda diskusi secara ringkas..." class="w-full px-4 py-3 rounded-xl bg-navy-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-500 transition-colors"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl gold-gradient-bg text-navy-900 font-bold hover:shadow-lg hover:shadow-gold-500/20 transition-all duration-300">
+                                Kirim Inkuiri Resmi
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-navy-900 border-t border-white/5 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p>&copy; 2026 Prof. Syahdan Affan Assegaf, S.T., S.H. All rights reserved.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#hero" class="hover:text-gold-400 transition-colors">Kembali ke Atas</a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-gold-400 transition-colors">LinkedIn Eksekutif</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Handle Form Submission Without Page Reload
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('form-alert');
+            const form = document.getElementById('inquiryForm');
+
+            // Show Success Alert
+            alertBox.classList.remove('hidden');
+            form.reset();
+
+            // Auto hide alert after 6 seconds
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-3', 'shadow-xl', 'bg-navy-900/95');
+                navbar.classList.remove('py-5', 'bg-navy-900/80');
+            } else {
+                navbar.classList.add('py-5', 'bg-navy-900/80');
+                navbar.classList.remove('py-3', 'shadow-xl', 'bg-navy-900/95');
+            }
+        });
+    </script>
+</body>
+</html>
